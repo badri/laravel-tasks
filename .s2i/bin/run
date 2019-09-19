@@ -1,16 +1,4 @@
 #!/bin/bash
 
-pushd /app
-echo "---> Optimizing Configuration Loading..."
-php artisan config:cache
-
-
-echo "---> Optimizing Route Loading..."
-php artisan route:cache || exit 0
-
-echo " -----> Running DB migrations."
-php artisan migrate --force
-popd
-
 echo " -----> Run PHP FPM server."
 exec php-fpm
